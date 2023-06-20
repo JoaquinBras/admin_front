@@ -1,7 +1,63 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import '../css/Forms.css'
 
 const ProductRegistrationForm = () => {
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [stock, setStock] = useState(0)
+  const [category, setCategory] = useState('')
+  const [salient, setSalient] = useState(false)
+  const [slug, setSlug] = useState('')
+  const [image, setImage] = useState(null)
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    fetchCategories()
+  }, [])
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get('/api/categories')
+      const { categories } = response.data
+      setCategories(categories)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleFormSubmit = async e => {
+    e.preventDefault()
+
+    try {
+      const formData = new FormData()
+      formData.append('name', name)
+      formData.append('description', description)
+      formData.append('stock', stock)
+      formData.append('category', category)
+      formData.append('salient', salient)
+      formData.append('slug', slug)
+      formData.append('image', image)
+
+      const response = await axios.post('/api/products', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+
+      console.log(response.data)
+      setName('')
+      setDescription('')
+      setStock(0)
+      setCategory('')
+      setSalient(false)
+      setSlug('')
+      setImage(null)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div className="container d-grid align-items-center justify-content-center">
       <div
@@ -12,27 +68,32 @@ const ProductRegistrationForm = () => {
           <h3 className="text-muted">Registro de producto</h3>
         </div>
         <hr />
-        <form method="post" action="">
+        <form onSubmit={handleFormSubmit}>
           <label htmlFor="name" className="mb-2 text-muted fw-bold">
             Nombre
           </label>
           <input
             autoFocus
-            type="email"
-            id="email"
-            name="email"
+            type="text"
+            id="name"
+            name="name"
             className="form-control mb-3"
             placeholder="Ingrese nombre de producto.."
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
           />
           <label htmlFor="description" className="mb-2 text-muted fw-bold">
             Descripción
           </label>
           <textarea
-            type="email"
-            id="email"
-            name="email"
+            id="description"
+            name="description"
             className="form-control mb-2"
             placeholder="Ingrese descripción de producto.."
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            required
           ></textarea>
           <label htmlFor="stock" className="mb-2 text-muted fw-bold">
             Stock
@@ -43,6 +104,9 @@ const ProductRegistrationForm = () => {
             name="stock"
             className="form-control mb-3"
             placeholder="Ingrese stock.."
+            value={stock}
+            onChange={e => setStock(e.target.value)}
+            required
           />
           <label htmlFor="category" className="mb-2 text-muted fw-bold">
             Categoría
@@ -51,14 +115,16 @@ const ProductRegistrationForm = () => {
             id="category"
             name="category"
             className="form-select mb-3"
-            placeholder="Seleccione categoría.."
+            value={category}
+            onChange={e => setCategory(e.target.value)}
+            required
           >
             <option value="">Seleccione categoría..</option>
-            <option value="muebles">Muebles</option>
-            <option value="espejos">Espejos</option>
-            <option value="cuadros">Cuadros</option>
-            <option value="luminarias">Luminarias</option>
-            <option value="tapices">Tapices</option>
+            {categories.map(category => (
+              <option value={category.id} key={category.id}>
+                {category.name}
+              </option>
+            ))}
           </select>
           <label htmlFor="salient" className="mb-2 text-muted fw-bold">
             Destacado
@@ -69,6 +135,8 @@ const ProductRegistrationForm = () => {
               id="salient"
               name="salient"
               className="form-check-input"
+              checked={salient}
+              onChange={e => setSalient(e.target.checked)}
             />
             <label className="form-check-label" htmlFor="salient">
               Producto destacado?
@@ -83,6 +151,8 @@ const ProductRegistrationForm = () => {
             name="slug"
             className="form-control mb-3"
             placeholder="Ingrese slug.."
+            value={slug}
+            onChange={e => setSlug(e.target.value)}
           />
           <label htmlFor="image" className="text-muted fw-bold mb-2">
             Seleccionar una imagen
@@ -92,6 +162,8 @@ const ProductRegistrationForm = () => {
             name="image"
             type="file"
             className="form-control mb-3"
+            onChange={e => setImage(e.target.files[0])}
+            accept="image/*"
           />
           <button className="btn btn-success mb-2 mt-3" type="submit">
             Registrar
