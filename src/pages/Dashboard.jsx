@@ -1,7 +1,7 @@
 import "../css/Home.css";
 import "../css/Dashboard.css";
-
-import { Link } from "react-router-dom";
+import Navbar from "../components/NavBar";
+import SideBar from "../components/Sidebar";
 
 //      CHARTJS
 import {
@@ -65,40 +65,10 @@ function Dashboard() {
     <main className="p-0">
       {/* Sidebar */}
       <section className="row bg-light opacity-75 ">
-        <div className="col-6">
-          {" "}
-          <h2 className="p-2">Mod Name</h2>
-        </div>
-        <div className="col-6">
-          {" "}
-          <dd className="py-4">Dasboard</dd>
-        </div>
+        <Navbar />
       </section>
       <section className="row p-0">
-        <nav id="sidebar" className="col-md-2 col-sm-1">
-          <ul className="list-group list-group-flush p-3">
-            <li className="list-group-item-dark">
-              <Link to="/">
-                <i className="fas fa-chair px-4"></i>Dashboard
-              </Link>
-            </li>
-            <li className="list-group-item-dark">
-              <Link to="/products">
-                <i className="fas fa-chair px-4"></i>Productos
-              </Link>
-            </li>
-            <li className="list-group-item-dark">
-              <Link to="/orders">
-                <i className="fas fa-chair px-4"></i>Pedidos
-              </Link>
-            </li>
-            <li className="list-group-item-dark">
-              <Link to="/settings">
-                <i className="fas fa-chair px-4"></i>Ajustes
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        <SideBar />
         {/* Content Area */}
         <div id="contentArea" className="col-md-10 col-sm-9">
           {" "}

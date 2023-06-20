@@ -1,7 +1,15 @@
 import React from "react";
+import SideBar from "../components/Sidebar";
+import Navbar from "../components/NavBar";
 
 function Orders() {
-  return <>Lista de Pedidos</>;
+  return (
+    <>
+      <Navbar />
+
+      <SideBar />
+    </>
+  );
 }
 
 export default Orders;
