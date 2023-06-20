@@ -8,6 +8,7 @@ import Settings from './pages/Settings'
 import ProductRegistration from './pages/ProductRegistration'
 import ProductEdit from './pages/ProductEditForm'
 import Login from './pages/Login'
+import CategoryRegistration from './pages/CategoryRegistration'
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
         <Route path="/productRegistration" element={<ProductRegistration />} />
         <Route path="/productEdit" element={<ProductEdit />} />
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/categoryRegistration"
+          element={<CategoryRegistration />}
+        />
       </Routes>
     </>
   )
