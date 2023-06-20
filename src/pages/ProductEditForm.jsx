@@ -1,9 +1,13 @@
 import React from 'react'
+import '../css/Forms.css'
 
 const EditProductForm = () => {
   return (
     <div className="container d-grid align-items-center justify-content-center">
-      <div className="shadow rounded m-5 p-4 custom-form" id="contenedor">
+      <div
+        className="shadow rounded m-5 p-4 custom-form white-form"
+        id="contenedor"
+      >
         <div>
           <h3 className="text-muted">Editar producto</h3>
         </div>
