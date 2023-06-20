@@ -6,6 +6,7 @@ import Products from './pages/Products'
 import Orders from './pages/Orders'
 import Settings from './pages/Settings'
 import ProductRegistration from './pages/ProductRegistration'
+import ProductEdit from './pages/ProductEditForm'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/productRegistration" element={<ProductRegistration />} />
+        <Route path="/productEdit" element={<ProductEdit />} />
       </Routes>
     </>
   )
