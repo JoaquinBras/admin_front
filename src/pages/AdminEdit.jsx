@@ -56,11 +56,6 @@ const EditAdminForm = () => {
           </button>
         </form>
       </div>
-      <div className="ms-5">
-        <a className="ms-4" href="/login.html">
-          Return
-        </a>
-      </div>
     </div>
   )
 }

@@ -36,11 +36,6 @@ const AdminLoginForm = () => {
           </button>
         </form>
       </div>
-      <div className="ms-5">
-        <a className="ms-4" href="/adminRegister.html">
-          Return
-        </a>
-      </div>
     </div>
   )
 }

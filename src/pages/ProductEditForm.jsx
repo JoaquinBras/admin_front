@@ -94,11 +94,6 @@ const EditProductForm = () => {
           </button>
         </form>
       </div>
-      <div className="ms-5">
-        <a className="ms-4" href="/adminEdit.html">
-          Return
-        </a>
-      </div>
     </div>
   )
 }
