@@ -1,0 +1,21 @@
+#sidebar {
+  height: 100dvh;
+}
+#sidebar ul {
+  min-height: 50%;
+}
+#sidebar li {
+  margin-block: auto;
+}
+a {
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+#glanceableInfo .container {
+  background-color: var(--secondary-color);
+  min-height: 5rem;
+  font-size: 1.6rem;
+}
+#chart img {
+  width: 100%;
+}
