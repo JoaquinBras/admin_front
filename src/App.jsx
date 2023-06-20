@@ -10,6 +10,8 @@ import ProductEdit from './pages/ProductEditForm'
 import Login from './pages/Login'
 import CategoryRegistration from './pages/CategoryRegistration'
 import CategoryEdit from './pages/CategoryEdit'
+import AdminRegister from './pages/AdminRegister'
+import AdminEdit from './pages/AdminEdit'
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           element={<CategoryRegistration />}
         />
         <Route path="/categoryEdit" element={<CategoryEdit />} />
+        <Route path="/adminRegister" element={<AdminRegister />} />
+        <Route path="/adminEdit" element={<AdminEdit />} />
       </Routes>
     </>
   )
