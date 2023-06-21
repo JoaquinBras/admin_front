@@ -1,7 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 import '../css/Forms.css'
 
-const CategoryRegistrationForm = () => {
+function CategoryRegistrationForm() {
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [image, setImage] = useState(null)
+
+  const handleFormSubmit = async e => {
+    e.preventDefault()
+
+    try {
+      const formData = new FormData()
+      formData.append('name', name)
+      formData.append('description', description)
+      formData.append('image', image)
+
+      const response = await axios.post(
+        'http://localhost:3000/category',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      )
+
+      console.log(response.data)
+      setName('')
+      setDescription('')
+      setImage(null)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div className="container d-grid align-items-center justify-content-center">
       <div
@@ -12,7 +45,7 @@ const CategoryRegistrationForm = () => {
           <h3 className="text-muted">Registro de categoría</h3>
         </div>
         <hr />
-        <form method="post" action="">
+        <form onSubmit={handleFormSubmit}>
           <label htmlFor="name" className="mb-2 text-muted fw-bold">
             Nombre
           </label>
@@ -23,6 +56,9 @@ const CategoryRegistrationForm = () => {
             name="name"
             className="form-control mb-3"
             placeholder="Ingrese nombre de categoría.."
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
           />
           <label htmlFor="description" className="mb-2 text-muted fw-bold">
             Descripción
@@ -33,6 +69,9 @@ const CategoryRegistrationForm = () => {
             name="description"
             className="form-control mb-3"
             placeholder="Ingrese descripción de categoría.."
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            required
           ></textarea>
           <label htmlFor="image" className="text-muted fw-bold mb-2">
             Seleccionar una imagen
@@ -42,6 +81,9 @@ const CategoryRegistrationForm = () => {
             name="image"
             type="file"
             className="form-control mb-3"
+            onChange={e => setImage(e.target.files[0])}
+            accept="image/*"
+            required
           />
           <button className="btn btn-success mb-2 mt-3" type="submit">
             Registrar

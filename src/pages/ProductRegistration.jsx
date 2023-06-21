@@ -10,7 +10,7 @@ function ProductRegistrationForm() {
   const [category, setCategory] = useState('')
   const [salient, setSalient] = useState(false)
   const [slug, setSlug] = useState('')
-  const [image, setImage] = useState()
+  const [image, setImage] = useState(null)
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
@@ -173,6 +173,7 @@ function ProductRegistrationForm() {
             placeholder="Ingrese slug.."
             value={slug}
             onChange={e => setSlug(e.target.value)}
+            required
           />
           <label htmlFor="image" className="text-muted fw-bold mb-2">
             Seleccionar una imagen
@@ -184,6 +185,7 @@ function ProductRegistrationForm() {
             className="form-control mb-3"
             onChange={e => setImage(e.target.files[0])}
             accept="image/*"
+            required
           />
           <button className="btn btn-success mb-2 mt-3" type="submit">
             Registrar
