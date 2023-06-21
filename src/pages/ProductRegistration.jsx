@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../css/Forms.css'
 
-const ProductRegistrationForm = () => {
+function ProductRegistrationForm() {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [stock, setStock] = useState(0)
+  const [price, setPrice] = useState(0)
   const [category, setCategory] = useState('')
   const [salient, setSalient] = useState(false)
   const [slug, setSlug] = useState('')
-  const [image, setImage] = useState(null)
+  const [image, setImage] = useState()
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const ProductRegistrationForm = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('/api/categories')
+      const response = await axios.get('http://localhost:3000/category')
       const { categories } = response.data
       setCategories(categories)
     } catch (error) {
@@ -34,25 +35,31 @@ const ProductRegistrationForm = () => {
       formData.append('name', name)
       formData.append('description', description)
       formData.append('stock', stock)
-      formData.append('category', category)
+      formData.append('price', price)
+      formData.append('categoryId', category)
       formData.append('salient', salient)
       formData.append('slug', slug)
       formData.append('image', image)
 
-      const response = await axios.post('/api/products', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      const response = await axios.post(
+        'http://localhost:3000/product',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
         }
-      })
+      )
 
       console.log(response.data)
       setName('')
       setDescription('')
       setStock(0)
+      setPrice(0)
       setCategory('')
       setSalient(false)
       setSlug('')
-      setImage(null)
+      setImage()
     } catch (error) {
       console.error(error)
     }
@@ -106,6 +113,19 @@ const ProductRegistrationForm = () => {
             placeholder="Ingrese stock.."
             value={stock}
             onChange={e => setStock(e.target.value)}
+            required
+          />
+          <label htmlFor="price" className="mb-2 text-muted fw-bold">
+            Precio
+          </label>
+          <input
+            type="number"
+            id="price"
+            name="price"
+            className="form-control mb-3"
+            placeholder="Ingrese precio.."
+            value={price}
+            onChange={e => setPrice(e.target.value)}
             required
           />
           <label htmlFor="category" className="mb-2 text-muted fw-bold">
