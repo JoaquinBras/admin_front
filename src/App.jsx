@@ -1,7 +1,7 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
-import { ProtectedRoute } from "./ProtectedRoutes"
-import { useSelector } from "react-redux";
+import { ProtectedRoute } from './ProtectedRoutes'
+import { useSelector } from 'react-redux'
 
 import Dashboard from './pages/Dashboard'
 import Products from './pages/Products'
@@ -16,26 +16,29 @@ import AdminRegister from './pages/AdminRegister'
 import AdminEdit from './pages/AdminEdit'
 
 function App() {
-  const store = useSelector((state) => state);
-  const admin = store.admin;
+  const store = useSelector(state => state)
+  const admin = store.admin
 
   return (
     <>
       <Routes>
-      <Route element={<ProtectedRoute admin={admin} redirectTo="/login" />}>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/productRegistration" element={<ProductRegistration />} />
-        <Route path="/productEdit" element={<ProductEdit />} />
-        <Route
-          path="/categoryRegistration"
-          element={<CategoryRegistration />}
-        />
-        <Route path="/categoryEdit" element={<CategoryEdit />} />
-        <Route path="/adminEdit" element={<AdminEdit />} />
-       </Route>
+        <Route element={<ProtectedRoute admin={admin} redirectTo="/login" />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route
+            path="/productRegistration"
+            element={<ProductRegistration />}
+          />
+          <Route path="/productEdit/:id" element={<ProductEdit />} />
+          <Route
+            path="/categoryRegistration"
+            element={<CategoryRegistration />}
+          />
+          <Route path="/categoryEdit" element={<CategoryEdit />} />
+          <Route path="/adminEdit" element={<AdminEdit />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/adminRegister" element={<AdminRegister />} />
       </Routes>
