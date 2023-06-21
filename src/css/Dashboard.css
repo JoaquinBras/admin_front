@@ -19,3 +19,8 @@ a {
 #chart img {
   width: 100%;
 }
+
+.list-group-item-light {
+  color: rgb(213, 33, 33);
+  margin-left: 11%;
+}

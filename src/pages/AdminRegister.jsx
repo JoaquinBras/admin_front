@@ -1,42 +1,31 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import '../css/Forms.css'
 
 const AdminRegisterForm = () => {
-  const [firstname, setFirstName] = useState('')
-  const [lastname, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const navigate = useNavigate();
 
-  const handleFormSubmit = async e => {
-    e.preventDefault()
+  const [firstNameValue, setFirstNameValue] = useState("");
+  const [lastNameValue, setLastNameValue] = useState("");
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
 
-    try {
-      const formData = new FormData()
-      formData.append('firstname', firstname)
-      formData.append('lastname', lastname)
-      formData.append('email', email)
-      formData.append('password', password)
-
-      const response = await axios.post(
-        'http://localhost:3000/admin/register',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }
-      )
-
-      console.log(response.data)
-      setFirstName('')
-      setLastName('')
-      setEmail('')
-      setPassword('')
-    } catch (error) {
-      console.error(error)
-    }
+  async function handleSubmitRegister(event) {
+    event.preventDefault();
+    await axios({
+      method: "POST",
+      url: "http://localhost:3000/admin/register",
+      data: {
+          firstname :firstNameValue,
+          lastname :lastNameValue,
+          email: emailValue,
+          password: passwordValue,
+        },
+    });
+    navigate("/login");
   }
+
 
   return (
     <div className="container d-grid align-items-center justify-content-center">
@@ -48,7 +37,7 @@ const AdminRegisterForm = () => {
           <h3 className="text-muted">Registro de administrador</h3>
         </div>
         <hr />
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleSubmitRegister} autoComplete="off">
           <label htmlFor="name" className="mb-2 text-muted fw-bold">
             Nombre
           </label>
@@ -59,8 +48,8 @@ const AdminRegisterForm = () => {
             name="firstname"
             className="form-control mb-3"
             placeholder="Ingrese nombre de administrador.."
-            value={firstname}
-            onChange={e => setFirstName(e.target.value)}
+            value={firstNameValue}
+            onChange={event =>setFirstNameValue(event.target.value)}
             required
           />
           <label htmlFor="name" className="mb-2 text-muted fw-bold">
@@ -72,8 +61,8 @@ const AdminRegisterForm = () => {
             name="lastname"
             className="form-control mb-3"
             placeholder="Ingrese apellido de administrador.."
-            value={lastname}
-            onChange={e => setLastName(e.target.value)}
+            value={lastNameValue}
+            onChange={event => setLastNameValue(event.target.value)}
             required
           />
           <label htmlFor="email" className="mb-2 text-muted fw-bold">
@@ -85,8 +74,8 @@ const AdminRegisterForm = () => {
             name="email"
             className="form-control mb-3"
             placeholder="Ingrese email.."
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            value={emailValue}
+            onChange={event => setEmailValue(event.target.value)}
             required
           />
           <label htmlFor="password" className="mb-2 text-muted fw-bold">
@@ -98,8 +87,8 @@ const AdminRegisterForm = () => {
             name="password"
             className="form-control mb-3"
             placeholder="Ingrese contraseña.."
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            value={passwordValue}
+            onChange={event => set(event.target.value)}
             required
           />
           <button className="btn btn-success mb-2 mt-3" type="submit">
