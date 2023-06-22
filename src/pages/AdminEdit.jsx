@@ -9,6 +9,7 @@ const EditAdminForm = () => {
   const [lastname, setLastname] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
 
   useEffect(() => {
     fetchAdmin()
@@ -23,7 +24,6 @@ const EditAdminForm = () => {
       setFirstname(admin.firstname)
       setLastname(admin.lastname)
       setEmail(admin.email)
-      //setPassword('')
     } catch (error) {
       console.error(error)
     }
@@ -41,8 +41,8 @@ const EditAdminForm = () => {
       }
 
       await axios.patch(`${import.meta.env.VITE_API_URL}/admin/${id}`, formData)
-      console.log(formData)
-      // Redirigir a la página de administradores o mostrar un mensaje de éxito, etc.
+
+      setSuccessMessage('Datos guardados.')
     } catch (error) {
       console.error(error)
     }
@@ -58,6 +58,9 @@ const EditAdminForm = () => {
           <h3 className="text-muted fw-bold">Editar administrador</h3>
         </div>
         <hr />
+        {successMessage && (
+          <div className="alert alert-success">{successMessage}</div>
+        )}
         <form onSubmit={handleFormSubmit}>
           <label htmlFor="firstname" className="mb-2 text-muted fw-bold">
             Nombre
@@ -113,7 +116,7 @@ const EditAdminForm = () => {
           />
 
           <button className="btn btn-success mb-2 mt-2" type="submit">
-            Editar
+            Guardar
           </button>
         </form>
       </div>
