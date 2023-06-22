@@ -72,7 +72,7 @@ function ProductRegistrationForm() {
         id="contenedor"
       >
         <div>
-          <h3 className="text-muted">Registro de producto</h3>
+          <h3 className="text-muted fw-bold">Registro de producto</h3>
         </div>
         <hr />
         <form onSubmit={handleFormSubmit}>

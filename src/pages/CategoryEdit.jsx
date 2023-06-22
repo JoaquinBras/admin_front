@@ -1,7 +1,58 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
 import '../css/Forms.css'
 
 const CategoryEditForm = () => {
+  const { id } = useParams()
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [image, setImage] = useState(null)
+
+  useEffect(() => {
+    fetchCategory()
+  }, [])
+
+  const fetchCategory = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/category/${id}`
+      )
+      const category = response.data
+      setName(category.name)
+      setDescription(category.description)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleFormSubmit = async e => {
+    e.preventDefault()
+
+    try {
+      const formData = new FormData()
+      formData.append('name', name)
+      formData.append('description', description)
+      if (image) {
+        formData.append('image', image)
+      }
+
+      await axios.patch(
+        `${import.meta.env.VITE_API_URL}/category/${id}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      )
+
+      // Redirigir a la página de categorías o mostrar un mensaje de éxito, etc.
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div className="container d-grid align-items-center justify-content-center">
       <div
@@ -9,10 +60,10 @@ const CategoryEditForm = () => {
         id="contenedor"
       >
         <div>
-          <h3 className="text-muted">Editar categoría</h3>
+          <h3 className="text-muted fw-bold">Editar categoría</h3>
         </div>
         <hr />
-        <form method="post" action="">
+        <form onSubmit={handleFormSubmit}>
           <label htmlFor="name" className="mb-2 text-muted fw-bold">
             Nombre
           </label>
@@ -23,6 +74,9 @@ const CategoryEditForm = () => {
             name="name"
             className="form-control mb-3"
             placeholder="Ingrese nombre de categoría.."
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
           />
           <label htmlFor="description" className="mb-2 text-muted fw-bold">
             Descripción
@@ -33,6 +87,9 @@ const CategoryEditForm = () => {
             name="description"
             className="form-control mb-3"
             placeholder="Ingrese descripción de categoría.."
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            required
           ></textarea>
           <label htmlFor="image" className="text-muted fw-bold mb-2">
             Seleccionar una imagen
@@ -42,6 +99,8 @@ const CategoryEditForm = () => {
             name="image"
             type="file"
             className="form-control mb-3"
+            onChange={e => setImage(e.target.files[0])}
+            accept="image/*"
           />
           <button className="btn btn-success mb-2 mt-3" type="submit">
             Editar

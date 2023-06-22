@@ -33,7 +33,7 @@ const AdminRegisterForm = () => {
         id="contenedor"
       >
         <div>
-          <h3 className="text-muted">Registro de administrador</h3>
+          <h3 className="text-muted fw-bold">Registro de administrador</h3>
         </div>
         <hr />
         <form onSubmit={handleSubmitRegister} autoComplete="off">

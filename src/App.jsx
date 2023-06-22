@@ -36,7 +36,7 @@ function App() {
             path="/categoryRegistration"
             element={<CategoryRegistration />}
           />
-          <Route path="/categoryEdit" element={<CategoryEdit />} />
+          <Route path="/categoryEdit/:id" element={<CategoryEdit />} />
           <Route path="/adminEdit" element={<AdminEdit />} />
         </Route>
         <Route path="/login" element={<Login />} />

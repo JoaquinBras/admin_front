@@ -98,7 +98,7 @@ function ProductEditForm() {
         id="contenedor"
       >
         <div>
-          <h3 className="text-muted">Editar producto</h3>
+          <h3 className="text-muted fw-bold">Editar producto</h3>
         </div>
         <hr />
         <form onSubmit={handleFormSubmit}>
