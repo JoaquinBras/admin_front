@@ -1,12 +1,6 @@
 html {
   min-height: 100% !important;
 }
-header {
-  background-image: url(/header-banner4.jpg);
-  background-size: cover;
-  /* background-repeat:space; */
-  background-position: center;
-}
 main {
   padding: 3rem 0;
 }
@@ -15,14 +9,7 @@ main {
   flex-direction: column;
   justify-content: space-evenly;
 }
-#presentacion {
-  background-color: #000a06;
-  background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-}
-#presentacion img {
-  width: 18rem;
-}
+
 .hero-title {
   align-self: flex-start;
   text-align: center;
@@ -43,7 +30,8 @@ article {
 }
 
 nav {
-  background-color: black !important;
+  max-width: 50vw;
+  background-color: var(--white);
 }
 .nav-link {
   color: var(--white) !important;
@@ -255,28 +243,4 @@ a:hover {
 
 /*            MEDIA MEDIA              */
 @media screen and (max-width: 600px) {
-  #presentacion,
-  .row-container {
-    padding: 0 2rem;
-    width: 100% !important;
-  }
-  #presentacion {
-    padding: 1rem;
-  }
-  .product-category p {
-    text-align: center;
-  }
-  #presentacion img {
-    width: 50vw;
-  }
-  .hero-title {
-    font-size: calc(5rem - 2vw);
-  }
-  .hero-title::first-letter {
-    font-size: 6rem;
-  }
-  article {
-    height: max-content;
-    color: var(--white);
-  }
 }
