@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Product from "../components/Product";
 import Navbar from "../components/NavBar";
+import SideBar from "../components/Sidebar";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -24,6 +25,7 @@ function Products() {
 
   return (
     <section className="row p-0">
+      <Navbar />
       <SideBar />
 
       <div id="contentArea" className="col-md-10 col-sm-9">
