@@ -4,10 +4,12 @@ import "../css/Dashboard.css";
 import SideBar from "../components/Sidebar";
 
 import Product from "../components/Product";
+import Navbar from "../components/NavBar";
 
 function Products() {
   return (
     <section className="row p-0">
+      <Navbar />
       <SideBar />
 
       <div id="contentArea" className="col-md-10 col-sm-9">

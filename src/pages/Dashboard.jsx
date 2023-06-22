@@ -67,56 +67,56 @@ function Dashboard() {
       <section className="row bg-light opacity-75 ">
         <Navbar />
       </section>
-      <section className="row p-0">
+      <section className="d-flex">
         <SideBar />
         {/* Content Area */}
-        <div id="contentArea" className="col-md-10 col-sm-9">
+        <div id="contentArea" className="p-0">
           {" "}
-          <div id="glanceableInfo" className="row">
+          <div id="glanceableInfo" className="row p-3">
             <div className="col-md-3 my-2">
-              <div className="container">
+              <div id="flujoCapital" className="container">
                 <i className="fas fa-wallet px-2"></i>
                 <small className="mx-3">Flujo de Capital</small>
                 <dd>Uy$ 28.030</dd>
               </div>
             </div>
             <div className="col-md-3 my-2">
-              <div className="container">
+              <div id="pedidos" className="container">
                 <i className="fas fa-clipboard-list px-2"></i>
                 <small className="mx-3">Pedidos</small>
                 <div className="text-center">
                   {" "}
-                  <span className="text-danger mx-2">20</span>/
-                  <span className="text-success mx-2">50</span>
+                  <span className="mx-2">20</span>/
+                  <span className="mx-2">50</span>
                 </div>
               </div>
             </div>
             <div className="col-md-3 my-2">
               {" "}
-              <div className="container">
+              <div id="mensajes" className="container">
                 <i className="far fa-envelope px-2"></i>
                 <small className="mx-3">Mensajes</small>
                 <div className="text-center">
                   {" "}
-                  <span className="text-danger mx-2">2</span>/
-                  <span className="text-success mx-2">25</span>
+                  <span className="mx-2">2</span>/
+                  <span className="mx-2">25</span>
                 </div>
               </div>{" "}
             </div>
             <div className="col-md-3 my-2">
               {" "}
-              <div className="container">
-                <i className="fas fa-exclamation px-2"></i>{" "}
+              <div id="notificaciones" className="container">
+                <i className="fas fa-exclamation"></i>{" "}
                 <small className="mx-3">Notificaciones</small>
                 <div className="text-center">
                   {" "}
-                  <span className="text-success mx-2">5</span>
+                  <span className="fw-bold mx-2">5</span>
                 </div>
               </div>{" "}
             </div>
           </div>
-          <div id="chart" className="container-fluid">
-            <h2>Aca va un chart.js ¡Cuando pueda implementarlo! 😠</h2>
+          <div id="chart" className="container">
+            <h2 className="text-center">Seguimiento de Ingresos</h2>
             <Line options={options} data={data} />{" "}
           </div>
         </div>

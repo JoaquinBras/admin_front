@@ -1,25 +1,41 @@
 #sidebar {
   height: 100dvh;
+  background-color: var(--black);
 }
 #sidebar ul {
   min-height: 50%;
 }
 #sidebar li {
   margin-block: auto;
+  color: var(--white);
 }
 a {
   text-decoration: none;
   font-size: 1.5rem;
 }
+#glanceableInfo {
+  width: 80vw;
+}
 #glanceableInfo .container {
-  background-color: var(--secondary-color);
   min-height: 5rem;
   font-size: 1.6rem;
 }
-#chart img {
-  width: 100%;
-}
 
+#chart img {
+  max-width: 80%;
+}
+#flujoCapital {
+  background-color: rgba(61, 201, 61, 0.9);
+}
+#pedidos {
+  background-color: rgb(255, 165, 0);
+}
+#mensajes {
+  background-color: rgb(117, 190, 215);
+}
+#notificaciones {
+  background-color: rgb(255, 89, 117);
+}
 .list-group-item-light {
   color: rgb(213, 33, 33);
   margin-left: 11%;
