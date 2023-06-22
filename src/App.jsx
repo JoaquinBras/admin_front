@@ -37,7 +37,7 @@ function App() {
             element={<CategoryRegistration />}
           />
           <Route path="/categoryEdit/:id" element={<CategoryEdit />} />
-          <Route path="/adminEdit" element={<AdminEdit />} />
+          <Route path="/adminEdit/:id" element={<AdminEdit />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/adminRegister" element={<AdminRegister />} />
