@@ -9,7 +9,7 @@ const EditAdminForm = () => {
         id="contenedor"
       >
         <div>
-          <h3 className="text-muted">Editar administrador</h3>
+          <h3 className="text-muted fw-bold">Editar administrador</h3>
         </div>
         <hr />
         <form method="post" action="">
