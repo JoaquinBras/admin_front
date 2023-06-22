@@ -1,31 +1,30 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import '../css/Forms.css'
 
 const AdminRegisterForm = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [firstNameValue, setFirstNameValue] = useState("");
-  const [lastNameValue, setLastNameValue] = useState("");
-  const [emailValue, setEmailValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
+  const [firstNameValue, setFirstNameValue] = useState('')
+  const [lastNameValue, setLastNameValue] = useState('')
+  const [emailValue, setEmailValue] = useState('')
+  const [passwordValue, setPasswordValue] = useState('')
 
   async function handleSubmitRegister(event) {
-    event.preventDefault();
+    event.preventDefault()
     await axios({
-      method: "POST",
-      url: "http://localhost:3000/admin/register",
+      method: 'POST',
+      url: 'http://localhost:3000/admin/register',
       data: {
-          firstname :firstNameValue,
-          lastname :lastNameValue,
-          email: emailValue,
-          password: passwordValue,
-        },
-    });
-    navigate("/login");
+        firstname: firstNameValue,
+        lastname: lastNameValue,
+        email: emailValue,
+        password: passwordValue
+      }
+    })
+    navigate('/login')
   }
-
 
   return (
     <div className="container d-grid align-items-center justify-content-center">
@@ -49,7 +48,7 @@ const AdminRegisterForm = () => {
             className="form-control mb-3"
             placeholder="Ingrese nombre de administrador.."
             value={firstNameValue}
-            onChange={event =>setFirstNameValue(event.target.value)}
+            onChange={event => setFirstNameValue(event.target.value)}
             required
           />
           <label htmlFor="name" className="mb-2 text-muted fw-bold">
@@ -88,7 +87,7 @@ const AdminRegisterForm = () => {
             className="form-control mb-3"
             placeholder="Ingrese contraseña.."
             value={passwordValue}
-            onChange={event => set(event.target.value)}
+            onChange={event => setPasswordValue(event.target.value)}
             required
           />
           <button className="btn btn-success mb-2 mt-3" type="submit">
