@@ -106,7 +106,7 @@ function Dashboard() {
             <div className="col-md-3 my-2">
               {" "}
               <div id="notificaciones" className="container">
-                <i className="fas fa-exclamation"></i>{" "}
+                <i className="fas fa-exclamation px-2"></i>{" "}
                 <small className="mx-3">Notificaciones</small>
                 <div className="text-center">
                   {" "}
