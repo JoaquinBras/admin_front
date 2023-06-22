@@ -16,7 +16,7 @@ function Products() {
         <div className="d-flex justify-content-between align-items-center mt-2 mb-3">
           <h2>PRODUCTOS</h2>
           <button className="btn btn-success me-3" href="/articulos/crear">
-            Nuevo
+            Agregar producto
           </button>
         </div>
 
