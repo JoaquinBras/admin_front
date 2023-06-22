@@ -3,6 +3,37 @@ import SideBar from "../components/Sidebar";
 import Navbar from "../components/NavBar";
 
 function Orders() {
+  const orders = [
+    {
+      id: 1,
+      cliente: "John Smith",
+      productos: "Espejo",
+      estado: "Pedido",
+      total: 120,
+    },
+    {
+      id: 2,
+      cliente: "Emily Johnson",
+      productos: "Cuadro",
+      estado: "Pagado",
+      total: 180,
+    },
+    {
+      id: 3,
+      cliente: "Michael Williams",
+      productos: "Tapiz",
+      estado: "Listo para entrega",
+      total: 210,
+    },
+    {
+      id: 4,
+      cliente: "Sophia Anderson",
+      productos: "Espejo",
+      estado: "Entregado",
+      total: 150,
+    },
+  ];
+
   return (
     <section className="row">
       <Navbar />
@@ -23,6 +54,17 @@ function Orders() {
               </th>
             </tr>
           </thead>
+          <tbody>
+            {orders.map((order) => (
+              <tr key={order.id}>
+                <td>{order.id}</td>
+                <td>{order.cliente}</td>
+                <td>{order.productos}</td>
+                <td>{order.estado}</td>
+                <td className="text-center">{order.total}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </section>

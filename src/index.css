@@ -23,3 +23,7 @@ body {
 html {
   min-height: 100% !important;
 }
+#contentArea {
+  overflow: scroll;
+  height: 100vh;
+}

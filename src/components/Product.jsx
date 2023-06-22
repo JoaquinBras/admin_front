@@ -2,17 +2,17 @@ import React from "react";
 import "../css/Product.css";
 
 const Product = ({ id, name, description, image }) => {
-  console.log(image);
+  // console.log(image);
   return (
     <tr>
       <td className="align-middle">
-        <h3>{id}</h3>
+        <dd>{id}</dd>
       </td>
       <td className="align-middle">
-        <p>{name}</p>
+        <dd>{name}</dd>
       </td>
       <td className="align-middle">
-        <p>{description}</p>
+        <dd>{description}</dd>
       </td>
       <td>
         <img
