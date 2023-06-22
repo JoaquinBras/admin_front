@@ -24,16 +24,19 @@ function ProductEditForm() {
 
   const fetchProduct = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/product/${id}`)
-      const { product } = response.data
-      setProduct(product)
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/product/${id}`
+      )
+      const product = response.data
+      setProduct({ product })
       setName(product.name)
       setDescription(product.description)
       setStock(product.stock)
       setPrice(product.price)
-      setCategory(product.categoryId)
+      //setCategory(product.categoryId)
       setSalient(product.salient)
       setSlug(product.slug)
+
       // No se cambia el estado de la imagen para mantener el valor existente
     } catch (error) {
       console.error(error)
@@ -59,14 +62,16 @@ function ProductEditForm() {
       formData.append('description', description)
       formData.append('stock', stock)
       formData.append('price', price)
-      formData.append('categoryId', category)
       formData.append('salient', salient)
       formData.append('slug', slug)
       if (image) {
         formData.append('image', image)
       }
+      if (category) {
+        formData.append('categoryId', category)
+      }
 
-      const response = await axios.put(
+      const response = await axios.patch(
         `http://localhost:3000/product/${id}`,
         formData,
         {
@@ -83,7 +88,7 @@ function ProductEditForm() {
   }
 
   if (!product) {
-    return <div>Nada para mostrar...</div>
+    return <div>Cargando...</div>
   }
 
   return (
@@ -93,7 +98,7 @@ function ProductEditForm() {
         id="contenedor"
       >
         <div>
-          <h3 className="text-muted">Editar producto</h3>
+          <h3 className="text-muted fw-bold">Editar producto</h3>
         </div>
         <hr />
         <form onSubmit={handleFormSubmit}>
@@ -158,7 +163,6 @@ function ProductEditForm() {
             className="form-select mb-3"
             value={category}
             onChange={e => setCategory(e.target.value)}
-            required
           >
             <option value="">Seleccione categoría..</option>
             {categories.map(category => (
@@ -206,7 +210,6 @@ function ProductEditForm() {
             className="form-control mb-3"
             onChange={e => setImage(e.target.files[0])}
             accept="image/*"
-            required
           />
           <button className="btn btn-success mb-2" type="submit">
             Guardar

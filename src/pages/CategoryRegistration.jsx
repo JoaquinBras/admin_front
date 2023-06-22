@@ -42,7 +42,7 @@ function CategoryRegistrationForm() {
         id="contenedor"
       >
         <div>
-          <h3 className="text-muted">Registro de categoría</h3>
+          <h3 className="text-muted fw-bold">Registro de categoría</h3>
         </div>
         <hr />
         <form onSubmit={handleFormSubmit}>
