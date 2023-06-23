@@ -24,6 +24,8 @@ html {
   min-height: 100% !important;
 }
 #contentArea {
-  overflow: scroll;
-  height: 100vh;
+  overflow: scroll !important;
+  max-height: 100vh;
+  padding: 0px 5px 0px 5px !important;
+  display: inline-block !important;
 }

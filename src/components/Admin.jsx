@@ -14,7 +14,7 @@ const Admin = ({ id, firstname, lastname, email, onDelete }) => {
   };
 
   return (
-    <tr>
+    <tr className="p-0">
       <td className="align-middle">
         <dd>{id}</dd>
       </td>

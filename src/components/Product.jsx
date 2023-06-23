@@ -32,7 +32,7 @@ const Product = ({ id, name, description, image, onDelete }) => {
         />
       </td>
       <td className="text-center align-middle">
-        <button className="btn btn-primary me-3" onClick={handleEdit}>
+        <button className="btn btn-primary mb-2" onClick={handleEdit}>
           Editar
         </button>
 

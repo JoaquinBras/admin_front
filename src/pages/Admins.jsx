@@ -41,7 +41,7 @@ function Admins() {
   };
 
   return (
-    <section className="row p-0">
+    <section className="row">
       <Navbar />
       <SideBar />
 

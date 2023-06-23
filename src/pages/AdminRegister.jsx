@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/Forms.css";
-import Navbar from "../components/Navbar";
+/* import Navbar from "../components/Navbar"; */
 import SideBar from "../components/Sidebar";
 
 const AdminRegisterForm = () => {
