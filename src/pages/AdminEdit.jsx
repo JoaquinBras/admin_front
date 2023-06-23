@@ -77,60 +77,6 @@ const EditAdminForm = () => {
             Ya existe administrador con el email indicado.
           </div>
         )}
-        <form onSubmit={handleFormSubmit}>
-          <label htmlFor="firstname" className="mb-2 text-muted fw-bold">
-            Nombre
-          </label>
-          <input
-            type="text"
-            id="firstname"
-            name="firstname"
-            className="form-control mb-3"
-            placeholder="Ingrese su nombre.."
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-            required
-          />
-          <label htmlFor="lastname" className="mb-2 text-muted fw-bold">
-            Apellido
-          </label>
-          <input
-            type="text"
-            id="lastname"
-            name="lastname"
-            className="form-control mb-3"
-            placeholder="Ingrese su apellido.."
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-            required
-          />
-          <label htmlFor="email" className="mb-2 text-muted fw-bold">
-            Correo
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className="form-control mb-3"
-            placeholder="Ingrese su correo.."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <label htmlFor="password" className="mb-2 text-muted fw-bold">
-            Contraseña
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            className="form-control mb-3"
-            placeholder="Ingrese su contraseña.."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </form>
 
         <div className="flex-grow-1 d-flex">
           <SideBar />
