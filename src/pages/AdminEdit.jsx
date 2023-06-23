@@ -13,6 +13,8 @@ const EditAdminForm = () => {
   const [password, setPassword] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
+  const [registrationError, setRegistrationError] = useState(false);
+
   useEffect(() => {
     fetchAdmin();
   }, []);
@@ -48,88 +50,162 @@ const EditAdminForm = () => {
       );
 
       setSuccessMessage("Datos guardados.");
+      setRegistrationError(false);
     } catch (error) {
       console.error(error);
+      setSuccessMessage("");
+      setRegistrationError(true);
     }
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100 ">
-      <Navbar />
+    <div className="container d-grid align-items-center justify-content-center">
+      <div
+        className="shadow rounded m-5 p-4 custom-form white-form"
+        id="contenedor"
+      >
+        <div>
+          <h3 className="text-muted fw-bold">Editar administrador</h3>
+        </div>
+        <hr />
 
-      <div className="flex-grow-1 d-flex">
-        <SideBar />
-        <div className="container d-grid align-items-center justify-content-center">
-          <div
-            className="shadow rounded m-5 p-4 custom-form white-form"
-            id="contenedor"
-          >
-            <div>
-              <h3 className="text-muted fw-bold">Editar administrador</h3>
+        {successMessage && (
+          <div className="alert alert-success">{successMessage}</div>
+        )}
+        {registrationError && (
+          <div className="alert alert-danger">
+            Ya existe administrador con el email indicado.
+          </div>
+        )}
+        <form onSubmit={handleFormSubmit}>
+          <label htmlFor="firstname" className="mb-2 text-muted fw-bold">
+            Nombre
+          </label>
+          <input
+            type="text"
+            id="firstname"
+            name="firstname"
+            className="form-control mb-3"
+            placeholder="Ingrese su nombre.."
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
+            required
+          />
+          <label htmlFor="lastname" className="mb-2 text-muted fw-bold">
+            Apellido
+          </label>
+          <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            className="form-control mb-3"
+            placeholder="Ingrese su apellido.."
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
+            required
+          />
+          <label htmlFor="email" className="mb-2 text-muted fw-bold">
+            Correo
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="form-control mb-3"
+            placeholder="Ingrese su correo.."
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <label htmlFor="password" className="mb-2 text-muted fw-bold">
+            Contraseña
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className="form-control mb-3"
+            placeholder="Ingrese su contraseña.."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </form>
+
+        <div className="flex-grow-1 d-flex">
+          <SideBar />
+          <div className="container d-grid align-items-center justify-content-center">
+            <div
+              className="shadow rounded m-5 p-4 custom-form white-form"
+              id="contenedor"
+            >
+              <div>
+                <h3 className="text-muted fw-bold">Editar administrador</h3>
+              </div>
+
+              <hr />
+              {successMessage && (
+                <div className="alert alert-success">{successMessage}</div>
+              )}
+              <form onSubmit={handleFormSubmit}>
+                <label htmlFor="firstname" className="mb-2 text-muted fw-bold">
+                  Nombre
+                </label>
+                <input
+                  type="text"
+                  id="firstname"
+                  name="firstname"
+                  className="form-control mb-3"
+                  placeholder="Ingrese su nombre.."
+                  value={firstname}
+                  onChange={(e) => setFirstname(e.target.value)}
+                  required
+                />
+                <label htmlFor="lastname" className="mb-2 text-muted fw-bold">
+                  Apellido
+                </label>
+                <input
+                  type="text"
+                  id="lastname"
+                  name="lastname"
+                  className="form-control mb-3"
+                  placeholder="Ingrese su apellido.."
+                  value={lastname}
+                  onChange={(e) => setLastname(e.target.value)}
+                  required
+                />
+                <label htmlFor="email" className="mb-2 text-muted fw-bold">
+                  Correo
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="form-control mb-3"
+                  placeholder="Ingrese su correo.."
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <label htmlFor="password" className="mb-2 text-muted fw-bold">
+                  Contraseña
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  className="form-control mb-3"
+                  placeholder="Ingrese su contraseña.."
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+
+                <button className="btn btn-success mb-2 mt-2" type="submit">
+                  Guardar
+                </button>
+              </form>
             </div>
-
-            <hr />
-            {successMessage && (
-              <div className="alert alert-success">{successMessage}</div>
-            )}
-            <form onSubmit={handleFormSubmit}>
-              <label htmlFor="firstname" className="mb-2 text-muted fw-bold">
-                Nombre
-              </label>
-              <input
-                type="text"
-                id="firstname"
-                name="firstname"
-                className="form-control mb-3"
-                placeholder="Ingrese su nombre.."
-                value={firstname}
-                onChange={(e) => setFirstname(e.target.value)}
-                required
-              />
-              <label htmlFor="lastname" className="mb-2 text-muted fw-bold">
-                Apellido
-              </label>
-              <input
-                type="text"
-                id="lastname"
-                name="lastname"
-                className="form-control mb-3"
-                placeholder="Ingrese su apellido.."
-                value={lastname}
-                onChange={(e) => setLastname(e.target.value)}
-                required
-              />
-              <label htmlFor="email" className="mb-2 text-muted fw-bold">
-                Correo
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="form-control mb-3"
-                placeholder="Ingrese su correo.."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <label htmlFor="password" className="mb-2 text-muted fw-bold">
-                Contraseña
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                className="form-control mb-3"
-                placeholder="Ingrese su contraseña.."
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-
-              <button className="btn btn-success mb-2 mt-2" type="submit">
-                Guardar
-              </button>
-            </form>
           </div>
         </div>
       </div>

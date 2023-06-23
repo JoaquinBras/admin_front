@@ -21,7 +21,7 @@ function CategoryRegistrationForm() {
       formData.append("image", image);
 
       const response = await axios.post(
-        "http://localhost:3000/category",
+        `${import.meta.env.VITE_API_URL}/category`,
         formData,
         {
           headers: {

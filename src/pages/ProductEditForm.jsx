@@ -45,7 +45,9 @@ function ProductEditForm() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/category");
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/category`
+      );
       const { categories } = response.data;
       setCategories(categories);
     } catch (error) {
@@ -72,11 +74,15 @@ function ProductEditForm() {
         formData.append("categoryId", category);
       }
 
-      await axios.patch(`http://localhost:3000/product/${id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.patch(
+        `${import.meta.env.VITE_API_URL}/product/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       setSuccessMessage("Datos guardados.");
     } catch (error) {
       console.error(error);
