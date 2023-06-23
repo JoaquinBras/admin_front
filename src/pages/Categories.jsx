@@ -1,43 +1,38 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Product from "../components/Product";
-import Navbar from "../components/NavBar";
+import Category from "../components/Category";
 import SideBar from "../components/Sidebar";
+import Navbar from "../components/NavBar";
 import { useNavigate } from "react-router-dom";
 
-function Products() {
-  const [products, setProducts] = useState([]);
-
+const Categories = () => {
   const navigate = useNavigate();
 
   const handleCreate = () => {
-    navigate(`/productRegistration`);
+    navigate(`/categoryRegistration`);
   };
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    listProducts();
+    fetchCategories();
   }, []);
 
-  async function listProducts() {
+  const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/product/");
-      const productList = Array.isArray(response.data.products)
-        ? response.data.products
+      const response = await axios.get("http://localhost:3000/category");
+      const categoryList = Array.isArray(response.data.categories)
+        ? response.data.categories
         : [];
-      setProducts(productList);
+      setCategories(categoryList);
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
-  const handleDelete = async (productId) => {
+  const handleDeleteCategory = async (categoryId) => {
     try {
-      await axios.delete(`http://localhost:3000/product/${productId}`);
-      const updatedProducts = products.filter(
-        (product) => product.id !== productId
-      );
-      setProducts(updatedProducts);
-      console.log(`Producto con ID ${productId} eliminado.`);
+      await axios.delete(`http://localhost:3000/category/${categoryId}`);
+      fetchCategories();
     } catch (error) {
       console.error(error);
     }
@@ -50,13 +45,13 @@ function Products() {
 
       <div id="contentArea" className="col-md-10 col-sm-9">
         <div className="d-flex justify-content-between align-items-center mt-2 mb-3">
-          <h2>PRODUCTOS</h2>
+          <h2>CATEGORIES</h2>
           <button
             className="btn btn-success me-3"
+            href="/categories/crear"
             onClick={handleCreate}
-            href="/articulos/crear"
           >
-            Agregar producto
+            Agregar categoria
           </button>
         </div>
 
@@ -73,14 +68,14 @@ function Products() {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
-              <Product
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                description={product.description}
-                image={product.image}
-                onDelete={handleDelete}
+            {categories.map((category) => (
+              <Category
+                key={category.id}
+                id={category.id}
+                name={category.name}
+                description={category.description}
+                image={category.image}
+                onDelete={handleDeleteCategory}
               />
             ))}
           </tbody>
@@ -88,6 +83,6 @@ function Products() {
       </div>
     </section>
   );
-}
+};
 
-export default Products;
+export default Categories;

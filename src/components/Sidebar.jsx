@@ -31,12 +31,12 @@ function SideBar() {
           </Link>
         </li>
         <li className="list-group-item-dark">
-          <Link to="#/categoryEdit">
+          <Link to="/categories">
             <i className="fas fa-list-alt px-4"></i>Categorias
           </Link>
         </li>
         <li className="list-group-item-dark">
-          <Link to="#/adminEdit">
+          <Link to="/admins">
             <i className="fas fa-user-shield px-4"></i>Admins
           </Link>
         </li>

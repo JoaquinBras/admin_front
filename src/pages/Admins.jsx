@@ -1,43 +1,40 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Product from "../components/Product";
+import Admin from "../components/Admin";
 import Navbar from "../components/NavBar";
 import SideBar from "../components/Sidebar";
 import { useNavigate } from "react-router-dom";
 
-function Products() {
-  const [products, setProducts] = useState([]);
+function Admins() {
+  const [admins, setAdmins] = useState([]);
 
   const navigate = useNavigate();
 
   const handleCreate = () => {
-    navigate(`/productRegistration`);
+    navigate(`/adminRegister`);
   };
 
   useEffect(() => {
-    listProducts();
+    listAdmins();
   }, []);
 
-  async function listProducts() {
+  async function listAdmins() {
     try {
-      const response = await axios.get("http://localhost:3000/product/");
-      const productList = Array.isArray(response.data.products)
-        ? response.data.products
-        : [];
-      setProducts(productList);
+      const response = await axios.get("http://localhost:3000/admin");
+
+      const adminsList = Array.isArray(response.data) ? response.data : [];
+      setAdmins(adminsList);
     } catch (error) {
       console.error(error);
     }
   }
 
-  const handleDelete = async (productId) => {
+  const handleDelete = async (adminId) => {
     try {
-      await axios.delete(`http://localhost:3000/product/${productId}`);
-      const updatedProducts = products.filter(
-        (product) => product.id !== productId
-      );
-      setProducts(updatedProducts);
-      console.log(`Producto con ID ${productId} eliminado.`);
+      await axios.delete(`http://localhost:3000/admin/${adminId}`);
+      const updatedAdmins = admins.filter((admin) => admin.id !== adminId);
+      setAdmins(updatedAdmins);
+      console.log(`Admin con ID ${adminId} eliminado.`);
     } catch (error) {
       console.error(error);
     }
@@ -50,13 +47,13 @@ function Products() {
 
       <div id="contentArea" className="col-md-10 col-sm-9">
         <div className="d-flex justify-content-between align-items-center mt-2 mb-3">
-          <h2>PRODUCTOS</h2>
+          <h2>Administradores</h2>
           <button
             className="btn btn-success me-3"
             onClick={handleCreate}
-            href="/articulos/crear"
+            href="/administradores/crear"
           >
-            Agregar producto
+            Agregar administrador
           </button>
         </div>
 
@@ -64,22 +61,22 @@ function Products() {
           <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">Producto</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Imagen</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Email</th>
               <th className="text-center" scope="col">
                 Acciones
               </th>
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
-              <Product
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                description={product.description}
-                image={product.image}
+            {admins.map((admin) => (
+              <Admin
+                key={admin.id}
+                id={admin.id}
+                firstname={admin.firstname}
+                lastname={admin.lastname}
+                email={admin.email}
                 onDelete={handleDelete}
               />
             ))}
@@ -90,4 +87,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default Admins;

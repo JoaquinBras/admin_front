@@ -1,16 +1,15 @@
 import React from "react";
-import "../css/Product.css";
+import "../css/Category.css";
 import { useNavigate } from "react-router-dom";
 
-const Product = ({ id, name, description, image, onDelete }) => {
+const Category = ({ id, name, description, image, onDelete }) => {
   const navigate = useNavigate();
-
   const handleDelete = () => {
     onDelete(id);
   };
 
   const handleEdit = () => {
-    navigate(`/productEdit/${id}`);
+    navigate(`/categoryEdit/${id}`);
   };
 
   return (
@@ -44,4 +43,4 @@ const Product = ({ id, name, description, image, onDelete }) => {
   );
 };
 
-export default Product;
+export default Category;

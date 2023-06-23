@@ -2,7 +2,7 @@ import React from "react";
 import "../css/Product.css";
 import { useNavigate } from "react-router-dom";
 
-const Product = ({ id, name, description, image, onDelete }) => {
+const Admin = ({ id, firstname, lastname, email, onDelete }) => {
   const navigate = useNavigate();
 
   const handleDelete = () => {
@@ -10,7 +10,7 @@ const Product = ({ id, name, description, image, onDelete }) => {
   };
 
   const handleEdit = () => {
-    navigate(`/productEdit/${id}`);
+    navigate(`/adminEdit/${id}`);
   };
 
   return (
@@ -19,18 +19,15 @@ const Product = ({ id, name, description, image, onDelete }) => {
         <dd>{id}</dd>
       </td>
       <td className="align-middle">
-        <dd>{name}</dd>
+        <dd>{firstname}</dd>
       </td>
       <td className="align-middle">
-        <dd>{description}</dd>
+        <dd>{lastname}</dd>
       </td>
-      <td>
-        <img
-          className="img-thumbnail"
-          src={`http://localhost:3000/img/${image}`}
-          alt={name}
-        />
+      <td className="align-middle">
+        <dd>{email}</dd>
       </td>
+
       <td className="text-center align-middle">
         <button className="btn btn-primary me-3" onClick={handleEdit}>
           Editar
@@ -44,4 +41,4 @@ const Product = ({ id, name, description, image, onDelete }) => {
   );
 };
 
-export default Product;
+export default Admin;
