@@ -11,6 +11,8 @@ const EditAdminForm = () => {
   const [password, setPassword] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 
+  const [registrationError, setRegistrationError] = useState(false)
+
   useEffect(() => {
     fetchAdmin()
   }, [])
@@ -43,8 +45,11 @@ const EditAdminForm = () => {
       await axios.patch(`${import.meta.env.VITE_API_URL}/admin/${id}`, formData)
 
       setSuccessMessage('Datos guardados.')
+      setRegistrationError(false)
     } catch (error) {
       console.error(error)
+      setSuccessMessage('')
+      setRegistrationError(true)
     }
   }
 
@@ -58,8 +63,14 @@ const EditAdminForm = () => {
           <h3 className="text-muted fw-bold">Editar administrador</h3>
         </div>
         <hr />
+
         {successMessage && (
           <div className="alert alert-success">{successMessage}</div>
+        )}
+        {registrationError && (
+          <div className="alert alert-danger">
+            Ya existe administrador con el email indicado.
+          </div>
         )}
         <form onSubmit={handleFormSubmit}>
           <label htmlFor="firstname" className="mb-2 text-muted fw-bold">
