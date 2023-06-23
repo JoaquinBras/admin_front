@@ -13,6 +13,8 @@ function ProductRegistrationForm() {
   const [image, setImage] = useState(null)
   const [categories, setCategories] = useState([])
 
+  const [successMessage, setSuccessMessage] = useState('')
+
   useEffect(() => {
     fetchCategories()
   }, [])
@@ -50,6 +52,7 @@ function ProductRegistrationForm() {
           }
         }
       )
+      setSuccessMessage('Datos guardados.')
 
       console.log(response.data)
       setName('')
@@ -75,6 +78,9 @@ function ProductRegistrationForm() {
           <h3 className="text-muted fw-bold">Registro de producto</h3>
         </div>
         <hr />
+        {successMessage && (
+          <div className="alert alert-success">{successMessage}</div>
+        )}
         <form onSubmit={handleFormSubmit}>
           <label htmlFor="name" className="mb-2 text-muted fw-bold">
             Nombre

@@ -8,6 +8,7 @@ const CategoryEditForm = () => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [image, setImage] = useState(null)
+  const [successMessage, setSuccessMessage] = useState('')
 
   useEffect(() => {
     fetchCategory()
@@ -47,7 +48,7 @@ const CategoryEditForm = () => {
         }
       )
 
-      // Redirigir a la página de categorías o mostrar un mensaje de éxito, etc.
+      setSuccessMessage('Datos guardados.')
     } catch (error) {
       console.error(error)
     }
@@ -63,6 +64,9 @@ const CategoryEditForm = () => {
           <h3 className="text-muted fw-bold">Editar categoría</h3>
         </div>
         <hr />
+        {successMessage && (
+          <div className="alert alert-success">{successMessage}</div>
+        )}
         <form onSubmit={handleFormSubmit}>
           <label htmlFor="name" className="mb-2 text-muted fw-bold">
             Nombre

@@ -10,6 +10,8 @@ const AdminLoginForm = () => {
   const [emailValue, setEmailValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
 
+  const [loginError, setLoginError] = useState(false)
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -29,6 +31,7 @@ const AdminLoginForm = () => {
       navigate('/')
     } catch (error) {
       console.error(error)
+      setLoginError(true)
     }
   }
 
@@ -43,6 +46,9 @@ const AdminLoginForm = () => {
         </div>
         <hr />
         <form onSubmit={handleSubmit} autoComplete="off">
+          {loginError && (
+            <div className="alert alert-danger">Credenciales incorrectas.</div>
+          )}
           <label htmlFor="email" className="mb-2 text-muted fw-bold">
             Correo
           </label>

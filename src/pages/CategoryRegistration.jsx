@@ -7,6 +7,8 @@ function CategoryRegistrationForm() {
   const [description, setDescription] = useState('')
   const [image, setImage] = useState(null)
 
+  const [successMessage, setSuccessMessage] = useState('')
+
   const handleFormSubmit = async e => {
     e.preventDefault()
 
@@ -25,6 +27,7 @@ function CategoryRegistrationForm() {
           }
         }
       )
+      setSuccessMessage('Datos guardados.')
 
       console.log(response.data)
       setName('')
@@ -45,6 +48,9 @@ function CategoryRegistrationForm() {
           <h3 className="text-muted fw-bold">Registro de categoría</h3>
         </div>
         <hr />
+        {successMessage && (
+          <div className="alert alert-success">{successMessage}</div>
+        )}
         <form onSubmit={handleFormSubmit}>
           <label htmlFor="name" className="mb-2 text-muted fw-bold">
             Nombre
