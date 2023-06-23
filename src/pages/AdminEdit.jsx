@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../css/Forms.css";
 import SideBar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavBar";
 
 const EditAdminForm = () => {
   const { id } = useParams();
@@ -59,25 +59,8 @@ const EditAdminForm = () => {
   };
 
   return (
-    <div className="container d-grid align-items-center justify-content-center">
-      <div
-        className="shadow rounded m-5 p-4 custom-form white-form"
-        id="contenedor"
-      >
-        <div>
-          <h3 className="text-muted fw-bold">Editar administrador</h3>
-        </div>
-        <hr />
-
-        {successMessage && (
-          <div className="alert alert-success">{successMessage}</div>
-        )}
-        {registrationError && (
-          <div className="alert alert-danger">
-            Ya existe administrador con el email indicado.
-          </div>
-        )}
-
+    <div className="row p-0">
+      <Navbar/>
         <div className="flex-grow-1 d-flex">
           <SideBar />
           <div className="container d-grid align-items-center justify-content-center">
@@ -155,7 +138,6 @@ const EditAdminForm = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
