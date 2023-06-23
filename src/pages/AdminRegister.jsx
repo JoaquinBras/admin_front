@@ -18,7 +18,7 @@ const AdminRegisterForm = () => {
     try {
       await axios({
         method: 'POST',
-        url: 'http://localhost:3000/admin/register',
+        url: `${import.meta.env.VITE_API_URL}/admin/register`,
         data: {
           firstname: firstNameValue,
           lastname: lastNameValue,

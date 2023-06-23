@@ -21,7 +21,9 @@ function ProductRegistrationForm() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/category')
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/category`
+      )
       const { categories } = response.data
       setCategories(categories)
     } catch (error) {
@@ -44,7 +46,7 @@ function ProductRegistrationForm() {
       formData.append('image', image)
 
       const response = await axios.post(
-        'http://localhost:3000/product',
+        `${import.meta.env.VITE_API_URL}/product`,
         formData,
         {
           headers: {
