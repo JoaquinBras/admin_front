@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../css/Forms.css";
-import Navbar from "../components/Navbar";
 import SideBar from "../components/Sidebar";
+import Navbar from "../components/NavBar";
 
 function ProductEditForm() {
   const { id } = useParams();
@@ -94,15 +94,15 @@ function ProductEditForm() {
   }
 
   return (
-    <div className="d-flex flex-column min-vh-100 ">
-      <Navbar />
+    <section className="row p-0">
+    <Navbar />
 
       <div className="flex-grow-1 d-flex">
         <SideBar />
-        <div className="container d-grid align-items-center justify-content-center">
+        <div className="container container-edit-form d-grid align-items-center justify-content-center">
           <div
-            className="shadow rounded m-5 p-4 custom-form white-form"
-            id="contenedor"
+            className="shadow rounded custom-form-register  custom-form white-form"
+            id=""
           >
             <div>
               <h3 className="text-muted fw-bold">Editar producto</h3>
@@ -228,7 +228,7 @@ function ProductEditForm() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

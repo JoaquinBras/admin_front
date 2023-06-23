@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../css/Forms.css";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavBar";
 import SideBar from "../components/Sidebar";
 
 function ProductRegistrationForm() {
@@ -73,14 +73,13 @@ function ProductRegistrationForm() {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100 ">
+    <div className="row p-0">
       <Navbar />
-
       <div className="flex-grow-1 d-flex">
         <SideBar />
-        <div className="container d-grid align-items-center justify-content-center">
+        <div className="container  d-grid align-items-center justify-content-center">
           <div
-            className="shadow rounded m-5 p-4 custom-form white-form"
+            className="shadow rounded custom-form-register custom-form white-form"
             id="contenedor"
           >
             <div>

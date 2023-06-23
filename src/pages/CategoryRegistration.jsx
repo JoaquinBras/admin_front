@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../css/Forms.css";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavBar";
 import SideBar from "../components/Sidebar";
 
 function CategoryRegistrationForm() {
@@ -41,8 +41,9 @@ function CategoryRegistrationForm() {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100 ">
+    <div className="row p-0">
       <Navbar />
+    
 
       <div className="flex-grow-1 d-flex">
         <SideBar />

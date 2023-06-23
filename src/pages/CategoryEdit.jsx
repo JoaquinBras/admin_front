@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "../css/Forms.css";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavBar";
 import SideBar from "../components/Sidebar";
 
 const CategoryEditForm = () => {
@@ -57,8 +57,9 @@ const CategoryEditForm = () => {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100 ">
-      <Navbar />
+    <section className="row p-0">
+    <Navbar />
+    
 
       <div className="flex-grow-1 d-flex">
         <SideBar />
@@ -120,7 +121,7 @@ const CategoryEditForm = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

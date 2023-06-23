@@ -5,3 +5,26 @@ body {
 .white-form {
   background-color: white;
 }
+
+.container-edit-form{
+  justify-content: center !important;
+  display: flex !important;
+  align-items: center;
+  margin-top: 10px !important;
+  margin-bottom: 10px;
+  width: 120vw;
+  position: relative;
+  /* top: -50rem; */
+}
+
+.custom-form-register{
+  overflow: scroll;
+  width: 30rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  height: 48rem;
+  margin: 0 !important;
+  display: inline-block !important;
+}

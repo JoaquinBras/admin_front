@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/Forms.css";
-/* import Navbar from "../components/Navbar"; */
+import Navbar from "../components/NavBar";
 import SideBar from "../components/Sidebar";
 
 const AdminRegisterForm = () => {
@@ -36,7 +36,7 @@ const AdminRegisterForm = () => {
   }
 
   return (
-    <div className="d-flex flex-column min-vh-100 ">
+    <section className="row p-0">
       <Navbar />
 
       <div className="flex-grow-1 d-flex">
@@ -117,7 +117,7 @@ const AdminRegisterForm = () => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
