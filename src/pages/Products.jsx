@@ -50,14 +50,19 @@ function Products() {
 
       <div id="contentArea" className="col-md-10 col-sm-9">
         <div className="d-flex justify-content-between align-items-center mt-2 mb-3">
-          <h2>PRODUCTOS</h2>
-          <button
+          <h2 className="mx-2">PRODUCTOS</h2>
+          {/*  <button
             className="btn btn-success me-3"
             onClick={handleCreate}
             href="/articulos/crear"
           >
             Agregar producto
-          </button>
+          </button> */}
+          <i
+            className="fas fa-plus mx-5 text-success"
+            onClick={handleCreate}
+            href="/administradores/crear"
+          ></i>
         </div>
 
         <table className="table table-striped">

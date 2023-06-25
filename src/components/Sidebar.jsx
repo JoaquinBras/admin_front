@@ -40,11 +40,11 @@ function SideBar() {
             <i className="fas fa-user-shield px-4"></i>Admins
           </Link>
         </li>
-        <li className="list-group-item-dark">
+        {/* <li className="list-group-item-dark">
           <Link to="/settings">
             <i className="fas fa-cogs px-4"></i>Ajustes
           </Link>
-        </li>
+        </li> */}
 
         <li className="list-group-item-light position-absolute top-100 end-20">
           <Link to="/login" onClick={handleLogout}>

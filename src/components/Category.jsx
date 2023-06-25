@@ -31,13 +31,8 @@ const Category = ({ id, name, description, image, onDelete }) => {
         />
       </td>
       <td className="text-center align-middle">
-        <button className="btn btn-primary me-3" onClick={handleEdit}>
-          Editar
-        </button>
-
-        <button className="btn btn-danger" onClick={handleDelete}>
-          Eliminar
-        </button>
+        <i className="far fa-edit me-3" onClick={handleEdit}></i>
+        <i className="fas fa-trash-alt ms-3" onClick={handleDelete}></i>
       </td>
     </tr>
   );

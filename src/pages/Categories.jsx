@@ -46,13 +46,18 @@ const Categories = () => {
       <div id="contentArea" className="col-md-10 col-sm-9">
         <div className="d-flex justify-content-between align-items-center mt-2 mb-3">
           <h2>CATEGORIES</h2>
-          <button
+          {/* <button
             className="btn btn-success me-3"
             href="/categories/crear"
             onClick={handleCreate}
           >
             Agregar categoria
-          </button>
+          </button> */}
+          <i
+            className="fas fa-plus mx-5 text-success"
+            onClick={handleCreate}
+            href="/administradores/crear"
+          ></i>
         </div>
 
         <table className="table table-striped">

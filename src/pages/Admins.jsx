@@ -48,13 +48,14 @@ function Admins() {
       <div id="contentArea" className="col-md-10 col-sm-9">
         <div className="d-flex justify-content-between align-items-center mt-2 mb-3">
           <h2>Administradores</h2>
-          <button
-            className="btn btn-success me-3"
+          {/* <button className="btn btn-success me-3">
+            Agregar administrador
+          </button> */}
+          <i
+            className="fas fa-plus mx-5 text-success"
             onClick={handleCreate}
             href="/administradores/crear"
-          >
-            Agregar administrador
-          </button>
+          ></i>
         </div>
 
         <table className="table table-striped">
