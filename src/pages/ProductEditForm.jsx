@@ -31,6 +31,7 @@ function ProductEditForm() {
         `${import.meta.env.VITE_API_URL}/product/${id}`
       )
       const product = response.data
+      console.log(product)
       setProduct({ product })
       setName(product.name)
       setDescription(product.description)
@@ -38,6 +39,7 @@ function ProductEditForm() {
       setPrice(product.price)
       setSalient(product.salient)
       setSlug(product.slug)
+      setCategory(product.Category.id)
     } catch (error) {
       console.error(error)
     }
@@ -172,9 +174,13 @@ function ProductEditForm() {
                 onChange={e => setCategory(e.target.value)}
               >
                 <option value="">Seleccione categoría..</option>
-                {categories.map(category => (
-                  <option value={category.id} key={category.id}>
-                    {category.name}
+                {categories.map(categoryOption => (
+                  <option
+                    value={categoryOption.id}
+                    key={categoryOption.id}
+                    selected={categoryOption.id === category ? 'true' : ''}
+                  >
+                    {categoryOption.name}
                   </option>
                 ))}
               </select>
