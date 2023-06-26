@@ -26,6 +26,5 @@ html {
 #contentArea {
   overflow: scroll !important;
   max-height: 100vh;
-  padding: 0px 5px 0px 5px !important;
   display: inline-block !important;
 }
