@@ -14,8 +14,6 @@
 }
 body {
   background-color: var(--secondary-color);
-  /* font-family: 'Bebas Neue', cursive; */
-  min-height: 100% !important;
   font-family: "Pridi", serif;
   background-image: url("https://www.transparenttextures.com/patterns/fabric-1-light.png");
 }
@@ -24,7 +22,10 @@ html {
   min-height: 100% !important;
 }
 #contentArea {
-  overflow: scroll !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden;
   max-height: 100vh;
+  max-width: 100%;
   display: inline-block !important;
+  scrollbar-width: thin;
 }

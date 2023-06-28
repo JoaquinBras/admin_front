@@ -3,7 +3,7 @@ import "../css/Navbar.css";
 function Navbar() {
   return (
     <nav className="row navbar-row-class p-0">
-      <div className="col-6 bg-black">
+      <div className="col-6 bg-black p-0">
         {" "}
         <h2 className="p-2 ms-3 mt-2 text-white">Admin Control</h2>
       </div>

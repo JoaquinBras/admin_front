@@ -64,13 +64,13 @@ function Dashboard() {
   return (
     <main className="p-0">
       {/* Sidebar */}
-      <section className="row bg-light opacity-75 ">
+      <section className="row">
         <Navbar />
       </section>
       <section className="d-flex">
         <SideBar />
         {/* Content Area */}
-        <div id="contentArea" className="p-0">
+        <div id="contentArea" className="py-3">
           {" "}
           <div id="glanceableInfo" className="row p-3">
             <div className="col-md-3 my-2">
