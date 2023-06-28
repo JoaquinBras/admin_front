@@ -21,7 +21,7 @@ const Product = ({ id, name, description, image, onDelete }) => {
       <td className="align-middle">
         <dd>{name}</dd>
       </td>
-      <td className="align-middle">
+      <td className="align-middle w-50">
         <dd>{description}</dd>
       </td>
       <td>
