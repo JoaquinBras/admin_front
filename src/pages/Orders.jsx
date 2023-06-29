@@ -1,39 +1,35 @@
-import React from "react";
-import SideBar from "../components/Sidebar";
-import Navbar from "../components/NavBar";
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import SideBar from '../components/Sidebar'
+import Navbar from '../components/NavBar'
 
 function Orders() {
-  const orders = [
-    {
-      id: 1,
-      cliente: "John Smith",
-      productos: "Espejo",
-      estado: "Pedido",
-      total: 120,
-    },
-    {
-      id: 2,
-      cliente: "Emily Johnson",
-      productos: "Cuadro",
-      estado: "Pagado",
-      total: 180,
-    },
-    {
-      id: 3,
-      cliente: "Michael Williams",
-      productos: "Tapiz",
-      estado: "Listo para entrega",
-      total: 210,
-    },
-    {
-      id: 4,
-      cliente: "Sophia Anderson",
-      productos: "Espejo",
-      estado: "Entregado",
-      total: 150,
-    },
-  ];
+  const [orders, setOrders] = useState([])
 
+  useEffect(() => {
+    fetchOrders()
+  }, [])
+
+  const fetchOrders = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/admin/orders`
+      )
+      const ordersData = response.data
+
+      setOrders(ordersData)
+      console.log(ordersData)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  function calculateOrderTotal(order) {
+    return order.products.reduce((total, product) => {
+      return total + product.price * product.qty
+    }, 0)
+  }
+
+  //ordersData &&
   return (
     <section className="row">
       <Navbar />
@@ -55,20 +51,30 @@ function Orders() {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {orders.map(order => (
               <tr key={order.id}>
                 <td>{order.id}</td>
-                <td>{order.cliente}</td>
-                <td>{order.productos}</td>
-                <td>{order.estado}</td>
-                <td className="text-center">{order.total}</td>
+                <td>
+                  {order.User.firstname} {order.User.lastname}
+                </td>
+                <td>
+                  {order.products.map(products => (
+                    <div key={products.id}>
+                      <p className="fw-bold">{products.name}</p>
+                      <p>Cantidad: {products.qty}</p>
+                      <p>Subtotal: {products.price * products.qty}</p>
+                    </div>
+                  ))}
+                </td>
+                <td>{order.state}</td>
+                <td className="text-center">{calculateOrderTotal(order)}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
     </section>
-  );
+  )
 }
 
-export default Orders;
+export default Orders
