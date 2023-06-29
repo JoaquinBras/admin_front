@@ -31,14 +31,15 @@ function Orders() {
 
   //ordersData &&
   return (
-    <section className="row">
+    <section className="row p-0">
       <Navbar />
+      <div className="flex-grow-1 d-flex">
       <SideBar />
-      <div className="col-10">
+      <div id="contentArea" className="col-10">
         <div className="d-flex justify-content-between align-items-center mt-2 mb-3">
-          <h2>Pedidos</h2>
+          <h2 className="mx-3">ORDENES</h2>
         </div>
-        <table className="table table-striped">
+        <table className="table table-striped m-3">
           <thead>
             <tr>
               <th scope="col">Id</th>
@@ -72,6 +73,7 @@ function Orders() {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     </section>
   )
