@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SideBar from '../components/Sidebar'
 import Navbar from '../components/NavBar'
+import "../css/ordenes.css"
 
 function Orders() {
   const [orders, setOrders] = useState([])

@@ -1,0 +1,8 @@
+#contentArea {
+    overflow-y: scroll !important;
+    overflow-x: hidden;
+    max-height: 100vh;
+    max-width: 100%;
+    display: inline-block !important;
+    scrollbar-width: thin;
+  }
