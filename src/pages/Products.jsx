@@ -1,47 +1,49 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Product from "../components/Product";
-import Navbar from "../components/NavBar";
-import SideBar from "../components/Sidebar";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Product from '../components/Product'
+import Navbar from '../components/NavBar'
+import SideBar from '../components/Sidebar'
+import { useNavigate } from 'react-router-dom'
 
 function Products() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([])
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleCreate = () => {
-    navigate(`/productRegistration`);
-  };
+    navigate(`/productRegistration`)
+  }
 
   useEffect(() => {
-    listProducts();
-  }, []);
+    listProducts()
+  }, [])
 
   async function listProducts() {
     try {
-      const response = await axios.get("http://localhost:3000/product/");
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/product/`
+      )
       const productList = Array.isArray(response.data.products)
         ? response.data.products
-        : [];
-      setProducts(productList);
+        : []
+      setProducts(productList)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
 
-  const handleDelete = async (productId) => {
+  const handleDelete = async productId => {
     try {
-      await axios.delete(`http://localhost:3000/product/${productId}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/product/${productId}`)
       const updatedProducts = products.filter(
-        (product) => product.id !== productId
-      );
-      setProducts(updatedProducts);
-      console.log(`Producto con ID ${productId} eliminado.`);
+        product => product.id !== productId
+      )
+      setProducts(updatedProducts)
+      console.log(`Producto con ID ${productId} eliminado.`)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-  };
+  }
 
   return (
     <section className="row p-0">
@@ -71,7 +73,7 @@ function Products() {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {products.map(product => (
               <Product
                 key={product.id}
                 id={product.id}
@@ -85,7 +87,7 @@ function Products() {
         </table>
       </div>
     </section>
-  );
+  )
 }
 
-export default Products;
+export default Products

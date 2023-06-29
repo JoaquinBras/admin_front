@@ -20,7 +20,7 @@ const AdminLoginForm = () => {
     try {
       const response = await axios({
         method: 'POST',
-        url: 'http://localhost:3000/admin/login',
+        url: `${import.meta.env.VITE_API_URL}/admin/login`,
         data: {
           email: emailValue,
           password: passwordValue

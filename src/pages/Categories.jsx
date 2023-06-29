@@ -1,42 +1,46 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Category from "../components/Category";
-import SideBar from "../components/Sidebar";
-import Navbar from "../components/NavBar";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Category from '../components/Category'
+import SideBar from '../components/Sidebar'
+import Navbar from '../components/NavBar'
+import { useNavigate } from 'react-router-dom'
 
 const Categories = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleCreate = () => {
-    navigate(`/categoryRegistration`);
-  };
-  const [categories, setCategories] = useState([]);
+    navigate(`/categoryRegistration`)
+  }
+  const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    fetchCategories();
-  }, []);
+    fetchCategories()
+  }, [])
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/category");
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/category`
+      )
       const categoryList = Array.isArray(response.data.categories)
         ? response.data.categories
-        : [];
-      setCategories(categoryList);
+        : []
+      setCategories(categoryList)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-  };
+  }
 
-  const handleDeleteCategory = async (categoryId) => {
+  const handleDeleteCategory = async categoryId => {
     try {
-      await axios.delete(`http://localhost:3000/category/${categoryId}`);
-      fetchCategories();
+      await axios.delete(
+        `${import.meta.env.VITE_API_URL}/category/${categoryId}`
+      )
+      fetchCategories()
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-  };
+  }
 
   return (
     <section className="row p-0">
@@ -73,7 +77,7 @@ const Categories = () => {
             </tr>
           </thead>
           <tbody>
-            {categories.map((category) => (
+            {categories.map(category => (
               <Category
                 key={category.id}
                 id={category.id}
@@ -87,7 +91,7 @@ const Categories = () => {
         </table>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Categories;
+export default Categories

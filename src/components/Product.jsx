@@ -1,17 +1,17 @@
-import React from "react";
-import "../css/Product.css";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import '../css/Product.css'
+import { useNavigate } from 'react-router-dom'
 
 const Product = ({ id, name, description, image, onDelete }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleDelete = () => {
-    onDelete(id);
-  };
+    onDelete(id)
+  }
 
   const handleEdit = () => {
-    navigate(`/productEdit/${id}`);
-  };
+    navigate(`/productEdit/${id}`)
+  }
 
   return (
     <tr>
@@ -27,7 +27,7 @@ const Product = ({ id, name, description, image, onDelete }) => {
       <td>
         <img
           className="img-thumbnail"
-          src={`http://localhost:3000/img/${image}`}
+          src={`${import.meta.env.VITE_API_URL}/img/${image}`}
           alt={name}
         />
       </td>
@@ -36,7 +36,7 @@ const Product = ({ id, name, description, image, onDelete }) => {
         <i className="fas fa-trash-alt ms-3" onClick={handleDelete}></i>
       </td>
     </tr>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product
