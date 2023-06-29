@@ -37,3 +37,7 @@ a {
   color: rgb(213, 33, 33);
   margin-left: 11%;
 }
+
+.Toastify__progress-bar {
+ background: orange !important;
+}

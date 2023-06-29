@@ -2,6 +2,9 @@ import "../css/Home.css";
 import "../css/Dashboard.css";
 import Navbar from "../components/NavBar";
 import SideBar from "../components/Sidebar";
+import { ToastContainer, toast } from "react-toastify";
+import React, { useEffect } from "react";
+import 'react-toastify/dist/ReactToastify.css';
 
 //      CHARTJS
 import {
@@ -25,47 +28,66 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-);
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
+  );
+  export const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Ventas y Pedidos",
+      },
     },
-    title: {
-      display: true,
-      text: "Ventas y Pedidos",
-    },
-  },
-};
-
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: labels.map(() => faker.datatype.number({ min: -10, max: 1000 })),
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 255, 132, 0.9)",
-    },
-    // {
-    //   label: "Dataset 2",
-    //   data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-    //   borderColor: "rgb(53, 162, 235)",
-    //   backgroundColor: "rgba(53, 162, 235, 0.5)",
-    // },
-  ],
-};
-//        CHARTJS
-
+  };
+  
+  const labels = ["January", "February", "March", "April", "May", "June", "July"];
+  
+  
+  export const data = {
+    labels,
+    datasets: [
+      {
+        label: "Dataset 1",
+        data: labels.map(() => faker.datatype.number({ min: -10, max: 1000 })),
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 255, 132, 0.9)",
+      },
+      // {
+        //   label: "Dataset 2",
+        //   data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+        //   borderColor: "rgb(53, 162, 235)",
+        //   backgroundColor: "rgba(53, 162, 235, 0.5)",
+        // },
+      ],
+    };
+    //        CHARTJS
+    
 function Dashboard() {
+  
+  useEffect(() => {
+    toast("🪄 Bienvenid@ a Admin Martei!!");
+  }, []);
+
   return (
     <main className="p-0">
       {/* Sidebar */}
       <section className="row">
         <Navbar />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="dark"
+        progressBar
+      />
       </section>
       <section className="d-flex">
         <SideBar />
