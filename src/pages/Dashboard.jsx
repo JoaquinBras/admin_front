@@ -1,6 +1,6 @@
 import "../css/Home.css";
 import "../css/Dashboard.css";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import SideBar from "../components/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import React, { useEffect } from "react";

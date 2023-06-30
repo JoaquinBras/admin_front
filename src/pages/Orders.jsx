@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SideBar from "../components/Sidebar";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import "../css/ordenes.css";
 
 function Orders() {
