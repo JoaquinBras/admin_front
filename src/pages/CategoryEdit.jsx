@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "../css/Forms.css";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import SideBar from "../components/Sidebar";
 
 const CategoryEditForm = () => {

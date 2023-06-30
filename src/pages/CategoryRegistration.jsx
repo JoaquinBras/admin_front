@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../css/Forms.css";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import SideBar from "../components/Sidebar";
 
 function CategoryRegistrationForm() {

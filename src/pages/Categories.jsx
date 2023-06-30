@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Category from '../components/Category'
 import SideBar from '../components/Sidebar'
-import Navbar from '../components/NavBar'
+import Navbar from '../components/Navbar'
 import { useNavigate } from 'react-router-dom'
 
 const Categories = () => {

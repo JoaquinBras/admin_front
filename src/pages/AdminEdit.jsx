@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../css/Forms.css";
 import SideBar from "../components/Sidebar";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 
 const EditAdminForm = () => {
   const { id } = useParams();
