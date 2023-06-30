@@ -27,7 +27,7 @@ const Product = ({ id, name, description, image, onDelete }) => {
       <td>
         <img
           className="img-thumbnail"
-          src={`${import.meta.env.VITE_API_URL}/img/${image}`}
+          src={`${import.meta.env.VITE_IMAGES_URL}${image}`}
           alt={name}
         />
       </td>
