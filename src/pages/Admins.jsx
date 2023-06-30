@@ -1,44 +1,44 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import Admin from '../components/Admin'
-import Navbar from '../components/NavBar'
-import SideBar from '../components/Sidebar'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Admin from "../components/Admin";
+import Navbar from "../components/NavBar";
+import SideBar from "../components/Sidebar";
+import { useNavigate } from "react-router-dom";
 
 function Admins() {
-  const [admins, setAdmins] = useState([])
+  const [admins, setAdmins] = useState([]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleCreate = () => {
-    navigate(`/adminRegister`)
-  }
+    navigate(`/adminRegister`);
+  };
 
   useEffect(() => {
-    listAdmins()
-  }, [])
+    listAdmins();
+  }, []);
 
   async function listAdmins() {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin`)
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin`);
 
-      const adminsList = Array.isArray(response.data) ? response.data : []
-      setAdmins(adminsList)
+      const adminsList = Array.isArray(response.data) ? response.data : [];
+      setAdmins(adminsList);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   }
 
-  const handleDelete = async adminId => {
+  const handleDelete = async (adminId) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/admin/${adminId}`)
-      const updatedAdmins = admins.filter(admin => admin.id !== adminId)
-      setAdmins(updatedAdmins)
-      console.log(`Admin con ID ${adminId} eliminado.`)
+      await axios.delete(`${import.meta.env.VITE_API_URL}/admin/${adminId}`);
+      const updatedAdmins = admins.filter((admin) => admin.id !== adminId);
+      setAdmins(updatedAdmins);
+      console.log(`Admin con ID ${adminId} eliminado.`);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   return (
     <section className="row">
@@ -71,7 +71,7 @@ function Admins() {
             </tr>
           </thead>
           <tbody>
-            {admins.map(admin => (
+            {admins.map((admin) => (
               <Admin
                 key={admin.id}
                 id={admin.id}
@@ -85,7 +85,7 @@ function Admins() {
         </table>
       </div>
     </section>
-  )
+  );
 }
 
-export default Admins
+export default Admins;

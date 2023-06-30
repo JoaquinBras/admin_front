@@ -32,7 +32,7 @@ function SideBar() {
         </li>
         <li className="list-group-item-dark">
           <Link to="/categories">
-            <i className="fas fa-list-alt px-4"></i>Categorias
+            <i className="fas fa-list-alt px-4"></i>Categorías
           </Link>
         </li>
         <li className="list-group-item-dark">

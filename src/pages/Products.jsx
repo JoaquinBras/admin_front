@@ -1,49 +1,51 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import Product from '../components/Product'
-import Navbar from '../components/NavBar'
-import SideBar from '../components/Sidebar'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Product from "../components/Product";
+import Navbar from "../components/NavBar";
+import SideBar from "../components/Sidebar";
+import { useNavigate } from "react-router-dom";
 
 function Products() {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleCreate = () => {
-    navigate(`/productRegistration`)
-  }
+    navigate(`/productRegistration`);
+  };
 
   useEffect(() => {
-    listProducts()
-  }, [])
+    listProducts();
+  }, []);
 
   async function listProducts() {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/product/`
-      )
+      );
       const productList = Array.isArray(response.data.products)
         ? response.data.products
-        : []
-      setProducts(productList)
+        : [];
+      setProducts(productList);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   }
 
-  const handleDelete = async productId => {
+  const handleDelete = async (productId) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/product/${productId}`)
+      await axios.delete(
+        `${import.meta.env.VITE_API_URL}/product/${productId}`
+      );
       const updatedProducts = products.filter(
-        product => product.id !== productId
-      )
-      setProducts(updatedProducts)
-      console.log(`Producto con ID ${productId} eliminado.`)
+        (product) => product.id !== productId
+      );
+      setProducts(updatedProducts);
+      console.log(`Producto con ID ${productId} eliminado.`);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   return (
     <section className="row p-0">
@@ -52,7 +54,7 @@ function Products() {
 
       <div id="contentArea" className="col-10">
         <div className="d-flex justify-content-between align-items-center mt-2 mb-3">
-          <h2 className="mx-2">PRODUCTOS</h2>
+          <h2 className="mx-2">Productos</h2>
           <i
             className="fas fa-plus mx-5 text-success"
             onClick={handleCreate}
@@ -73,7 +75,7 @@ function Products() {
             </tr>
           </thead>
           <tbody>
-            {products.map(product => (
+            {products.map((product) => (
               <Product
                 key={product.id}
                 id={product.id}
@@ -87,7 +89,7 @@ function Products() {
         </table>
       </div>
     </section>
-  )
+  );
 }
 
-export default Products
+export default Products;

@@ -4,7 +4,7 @@ import Navbar from "../components/NavBar";
 import SideBar from "../components/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import React, { useEffect } from "react";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 //      CHARTJS
 import {
@@ -28,44 +28,42 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-  );
-  export const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-      },
-      title: {
-        display: true,
-        text: "Ventas y Pedidos",
-      },
+);
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
     },
-  };
-  
-  const labels = ["January", "February", "March", "April", "May", "June", "July"];
-  
-  
-  export const data = {
-    labels,
-    datasets: [
-      {
-        label: "Dataset 1",
-        data: labels.map(() => faker.datatype.number({ min: -10, max: 1000 })),
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 255, 132, 0.9)",
-      },
-      // {
-        //   label: "Dataset 2",
-        //   data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-        //   borderColor: "rgb(53, 162, 235)",
-        //   backgroundColor: "rgba(53, 162, 235, 0.5)",
-        // },
-      ],
-    };
-    //        CHARTJS
-    
+    title: {
+      display: true,
+      text: "Ventas y Pedidos",
+    },
+  },
+};
+
+const labels = ["January", "February", "March", "April", "May", "June", "July"];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: "Dataset 1",
+      data: labels.map(() => faker.datatype.number({ min: -10, max: 1000 })),
+      borderColor: "rgb(255, 99, 132)",
+      backgroundColor: "rgba(255, 255, 132, 0.9)",
+    },
+    // {
+    //   label: "Dataset 2",
+    //   data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+    //   borderColor: "rgb(53, 162, 235)",
+    //   backgroundColor: "rgba(53, 162, 235, 0.5)",
+    // },
+  ],
+};
+//        CHARTJS
+
 function Dashboard() {
-  
   useEffect(() => {
     toast("🪄 Bienvenid@ a Admin Martei!!");
   }, []);
@@ -75,19 +73,19 @@ function Dashboard() {
       {/* Sidebar */}
       <section className="row">
         <Navbar />
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover={false}
-        theme="dark"
-        progressBar
-      />
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          theme="dark"
+          progressBar
+        />
       </section>
       <section className="d-flex">
         <SideBar />
@@ -98,7 +96,7 @@ function Dashboard() {
             <div className="col-md-3 my-2">
               <div id="flujoCapital" className="container">
                 <i className="fas fa-wallet px-2"></i>
-                <small className="mx-3">Flujo de Capital</small>
+                <small className="mx-3">Flújo de Capital</small>
                 <dd>Uy$ 28.030</dd>
               </div>
             </div>
