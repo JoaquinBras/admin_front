@@ -1,6 +1,6 @@
 import React from "react";
 import SideBar from "../components/Sidebar";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 
 function Settings() {
   return (
