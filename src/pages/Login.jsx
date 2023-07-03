@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { setAdmin } from '../../Redux/adminSlice'
 import axios from 'axios'
 
 import '../css/Forms.css'
 
 const AdminLoginForm = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    const emailValue = query.get("admin") || "";
+    const passwordValue = query.get("password") || "";
+
+    setEmailValue(emailValue);
+    setPasswordValue(passwordValue);
+  }, [location.search]);
+
   const [emailValue, setEmailValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
 
