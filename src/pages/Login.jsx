@@ -57,9 +57,6 @@ const AdminLoginForm = () => {
         </div>
         <hr />
         <form onSubmit={handleSubmit} autoComplete="off">
-          {loginError && (
-            <div className="alert alert-danger">Credenciales incorrectas.</div>
-          )}
           <label htmlFor="email" className="mb-2 text-muted fw-bold">
             Correo
           </label>
@@ -72,7 +69,7 @@ const AdminLoginForm = () => {
             placeholder="Ingrese su correo.."
             value={emailValue}
             onChange={event => setEmailValue(event.target.value)}
-          />
+            />
           <label htmlFor="password" className="mb-2 text-muted fw-bold">
             Contraseña
           </label>
@@ -84,11 +81,14 @@ const AdminLoginForm = () => {
             placeholder="Ingrese su contraseña.."
             value={passwordValue}
             onChange={event => setPasswordValue(event.target.value)}
-          />
+            />
 
           <button className="btn btn-success mb-2 mt-2" type="submit">
             Iniciar sesión
           </button>
+            {loginError && (
+              <div className="alert alert-danger">Credenciales incorrectas.</div>
+            )}
         </form>
       </div>
     </div>
