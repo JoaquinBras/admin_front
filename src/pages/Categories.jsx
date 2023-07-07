@@ -49,7 +49,7 @@ const Categories = () => {
 
       <div id="contentArea" className="col-md-10 col-sm-9">
         <div className="d-flex justify-content-between align-items-center mt-2 mb-3">
-          <h2>CATEGORIES</h2>
+          <h2>CATEGORÍAS</h2>
           {/* <button
             className="btn btn-success me-3"
             href="/categories/crear"
