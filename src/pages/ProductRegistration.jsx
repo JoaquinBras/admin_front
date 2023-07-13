@@ -86,7 +86,7 @@ function ProductRegistrationForm() {
               <h3 className="text-muted fw-bold">Registro de producto</h3>
             </div>
             <hr />
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit} enctype="multipart/form-data">
               <label htmlFor="name" className="mb-2 text-muted fw-bold">
                 Nombre
               </label>
