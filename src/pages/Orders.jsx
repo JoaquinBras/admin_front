@@ -4,6 +4,8 @@ import SideBar from '../components/Sidebar'
 import Navbar from '../components/Navbar'
 import '../css/ordenes.css'
 
+import moment from 'moment'
+
 function Orders() {
   const [orders, setOrders] = useState([])
 
@@ -47,6 +49,7 @@ function Orders() {
               <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Cliente</th>
+                <th scope="col">Fecha</th>
                 <th scope="col">Productos</th>
                 <th scope="col">Estado</th>
                 <th className="text-center" scope="col">
@@ -61,6 +64,7 @@ function Orders() {
                   <td>
                     {order.User.firstname} {order.User.lastname}
                   </td>
+                  <td>{moment(order.createdAt).format('DD-MM-YYYY HH:mm')}</td>{' '}
                   <td>
                     {order.products.map(products => (
                       <div key={products.id}>
