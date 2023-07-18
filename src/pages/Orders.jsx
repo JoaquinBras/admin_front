@@ -1,33 +1,35 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import SideBar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
-import "../css/ordenes.css";
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import SideBar from '../components/Sidebar'
+import Navbar from '../components/Navbar'
+import '../css/ordenes.css'
 
 function Orders() {
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState([])
 
   useEffect(() => {
-    fetchOrders();
-  }, []);
+    fetchOrders()
+  }, [])
 
   const fetchOrders = async () => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/admin/orders`
-      );
-      const ordersData = response.data;
+      )
+      const ordersData = response.data
 
-      setOrders(ordersData);
-      console.log(ordersData);
+      setOrders(ordersData)
+      console.log(ordersData)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-  };
+  }
   function calculateOrderTotal(order) {
-    return order.products.reduce((total, product) => {
-      return total + product.price * product.qty;
-    }, 0);
+    return order.products
+      .reduce((total, product) => {
+        return total + product.price * product.qty
+      }, 0)
+      .toFixed(2)
   }
 
   //ordersData &&
@@ -53,14 +55,14 @@ function Orders() {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order) => (
+              {orders.map(order => (
                 <tr key={order.id}>
                   <td>{order.id}</td>
                   <td>
                     {order.User.firstname} {order.User.lastname}
                   </td>
                   <td>
-                    {order.products.map((products) => (
+                    {order.products.map(products => (
                       <div key={products.id}>
                         <p className="fw-bold">{products.name}</p>
                         <p>Cantidad: {products.qty}</p>
@@ -77,7 +79,7 @@ function Orders() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default Orders;
+export default Orders
